@@ -1,0 +1,12 @@
+<!--Wyniki z obszaru : {{obszar}}<br><br>-->
+    <!--Obwody : {{obwody}}<br>-->
+    <!--Uprawnieni : {{uprawnieni}}<br>-->
+    <!--Karty wydane : {{karty_wydane}}<br>-->
+    <!--Głosy oddane : {{glosy_oddane}}<br>-->
+    <!--Głosy nieważne : {{glosy_niewazne}}<br>-->
+    <!--Glosy ważne : {{glosy_wazne}}<br>-->
+    <!--<br>-->
+    <!--Kandydaci : <br>-->
+    <!--{% for x in range(12) %}-->
+        <!--{{kandydaci[x]}} : {{zebrane_glosy[x]}} <br>-->
+    <!--{% endfor %}-->

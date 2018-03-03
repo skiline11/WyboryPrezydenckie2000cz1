@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To jest template</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+
+<div id="tabela_statystyk" style="width: 50%; display: table;">
+    <table style="width:80%; margin-left: 10%; margin-top: 20px; margin-bottom: 20px">
+        <tr>
+            <td colspan="2">Wyniki z obszaru : {{ poczatek_typu_obszaru }}{{ typ_obszaru }}{{ dane["id_nazwa"] }}</td>
+        </tr>
+        <tr>
+            <td width="50%">Obwody</td>
+            <td width="50%">{{ dane["wyniki"]["obwody"] }}</td>
+        </tr>
+        <tr>
+            <td>Uprawnieni</td>
+            <td>{{ dane["wyniki"]["uprawnieni"] }}</td>
+        </tr>
+        <tr>
+            <td>Karty wydane</td>
+            <td>{{ dane["wyniki"]["karty_wydane"] }}</td>
+        </tr>
+        <tr>
+            <td>Glosy oddane</td>
+            <td>{{ dane["wyniki"]["glosy_oddane"] }}</td>
+        </tr>
+        <tr>
+            <td>Glosy nieważne</td>
+            <td>{{ dane["wyniki"]["glosy_niewazne"] }}</td>
+        </tr>
+        <tr>
+            <td>Glosy ważne</td>
+            <td>{{ dane["wyniki"]["glosy_wazne"] }}</td>
+        </tr>
+    </table>
+</div>
+
+<div id="wyniki_kandydatow" style="display: table; width: 50%">
+    <table style="width: 80%;margin-left: 10%;margin-bottom: 20px;margin-top: 20px;">
+        <tr>
+            <td colspan="3">Wyniki kandydatow</td>
+        </tr>
+    {% for x in range(12) %}
+        <tr>
+            <td width="50%">{{ kandydaci[x] }}</td>
+            <td width="25%">{{ dane["wyniki"]["zebrane_glosy"][x] }}</td>
+            <td width="25%">{{ dane["wyniki"]["zebrane_glosy"][x] }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+
+{% if typ_obszaru != "gmina " %}
+<div id="szczegoly" style="width: 100%">
+    <table style="width:90%;align-self: center;margin: 20px 5%;">
+        <tr>
+            <td colspan="5">Linki</td>
+        </tr>
+    {% for link in linki %}
+        {% if loop.index%5 == 1 %}
+        <tr>
+        {% endif %}
+            <td width="20%">
+                <a href="{{ poczatek_linku }}{{ link["nazwa"][typ_linku] }}.html">
+                        {{ link["nazwa"][typ_linku] }}
+                </a><br>
+            </td>
+        {% if loop.index%5 == 0 %}
+        </tr>
+        {% endif %}
+    {% endfor %}
+    {% if (linki|length)%5 != 0 %}
+        </tr>
+    {% endif %}
+    </table>
+</div>
+
+{% endif %}
+
+</body>
+</html>
